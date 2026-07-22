@@ -1,0 +1,64 @@
+ANAS JAMEEL
+Full Stack Developer
+
+CONTACT
+Email: anasjameel188@gmail.com
+Phone: +92 309 8127814
+Location: Lahore, Pakistan
+GitHub: https://github.com/anas-software-eng
+LinkedIn: https://www.linkedin.com/in/anas-software-eng/
+Upwork: https://www.upwork.com/freelancers/~0170accaa9f85b2a0a
+
+PROFESSIONAL SUMMARY
+Passionate full-stack developer specializing in crafting modern, scalable web applications. 
+3+ years of experience building digital experiences that matter. Skilled in React, Node.js, 
+TypeScript, and modern web technologies. Proven track record of delivering 25+ projects 
+with 99% client satisfaction.
+
+TECHNICAL SKILLS
+Frontend: React.js, TypeScript, JavaScript, TailwindCSS, Redux
+Backend: Node.js, Express.js, Python, FastAPI
+Database: MongoDB, PostgreSQL, Firebase
+Tools: Git, Docker, AWS, Figma
+APIs: REST, GraphQL, Socket.IO, Stripe Integration
+
+EXPERIENCE
+
+Senior Full Stack Developer | Tech Solutions Inc. | 2024 - Present
+- Leading development of enterprise-grade web applications
+- Mentoring junior developers and implementing CI/CD pipelines
+- Reduced deployment time by 60% through automation
+- Led a team of 5 developers on 3 major projects
+- Implemented microservices architecture serving 50K+ users
+
+Full Stack Developer | Digital Agency Co. | 2023 - 2024
+- Developed and maintained multiple client-facing applications
+- Built reusable component library used across 8 projects
+- Achieved 99.9% uptime for all deployed applications
+- Delivered 12+ client projects on time and within budget
+
+Frontend Developer | Startup Hub | 2022 - 2023
+- Built responsive, accessible web interfaces for startups
+- Improved Lighthouse scores from 65 to 95 across all projects
+- Integrated third-party APIs and payment gateways
+- Converted Figma designs to pixel-perfect React components
+
+KEY PROJECTS
+
+E-Commerce Platform
+Full-stack web application with real-time inventory, Stripe payments, admin dashboard, 
+and analytics. Handles 10K+ concurrent users.
+
+Project Management Tool
+Jira-like SaaS with Kanban boards, sprint planning, time tracking, team collaboration, 
+and comprehensive reporting.
+
+AI Content Generator
+Intelligent content platform using OpenAI APIs with SEO optimization and multi-language support.
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Lahore | 2018 - 2022
+
+LANGUAGES
+English (Fluent), Urdu (Native)
