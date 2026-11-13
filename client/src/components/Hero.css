@@ -25,6 +25,15 @@
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }
 
+.hero-orb-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* parallax translate lives on this layer so the CSS float
+       animation below stays free to own the orb's transform */
+    will-change: transform;
+}
+
 .hero-orb {
     position: absolute;
     border-radius: 50%;
@@ -99,6 +108,32 @@
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 8px;
+}
+
+.hero-hello {
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: 0.55em;
+    letter-spacing: 0;
+    margin-bottom: 4px;
+}
+
+/* Kinetic name reveal */
+.hero-name .split-word-mask {
+    background: var(--accent-gradient);
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Soft spotlight behind the headline */
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 42%, rgba(108, 99, 255, 0.12), transparent 70%);
+    pointer-events: none;
 }
 
 .hero-role {
@@ -203,7 +238,7 @@
 .scroll-indicator {
     position: absolute;
     bottom: 20px;
-    /* left: 50%; */
+    left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -214,6 +249,11 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    z-index: 1;
+}
+
+/* float lives on the inner stack so it can't clobber the centering */
+.scroll-indicator > * {
     animation: float 3s ease-in-out infinite;
 }
 

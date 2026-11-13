@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import { personalInfo } from '../data/portfolio';
-import { useScrollReveal } from '../hooks/useAnimations';
+import { useScrollReveal, useMagnetic } from '../hooks/useAnimations';
+import { fadeUp, stagger } from '../lib/motion';
+import SplitText from './SplitText';
+import Reveal, { RevealGroup } from './Reveal';
 import {
     FaEnvelope, FaMapMarkerAlt, FaPhone,
     FaGithub, FaLinkedin, FaPaperPlane
 } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Contact.css';
 
 export default function Contact() {
-    const [ref, isVisible] = useScrollReveal();
+    const [ref] = useScrollReveal();
+    const submitMagnet = useMagnetic(0.25);
     const [formData, setFormData] = useState({
         name: '', email: '', subject: '', message: ''
     });
@@ -51,37 +55,36 @@ export default function Contact() {
     return (
         <section className="contact" id="contact" ref={ref}>
             <div className="container">
-                <motion.div
-                    className="section-header"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                >
-                    <span className="section-label">Get in Touch</span>
-                    <h2 className="section-title">
-                        Let's Work{' '}
-                        <span className="gradient-text">Together</span>
-                    </h2>
-                    <p className="section-subtitle" style={{ margin: '0 auto' }}>
-                        Have a project in mind? Let's discuss how I can help bring your ideas to life
-                    </p>
-                </motion.div>
+                <div className="section-header">
+                    <Reveal variant="fade">
+                        <span className="section-label">Get in Touch</span>
+                    </Reveal>
+                    <SplitText
+                        text="Let's Work Together"
+                        highlight="Together"
+                        as="h2"
+                        className="section-title"
+                    />
+                    <Reveal variant="fade" delay={0.25}>
+                        <p className="section-subtitle" style={{ margin: '0 auto' }}>
+                            Have a project in mind? Let&apos;s discuss how I can help bring your ideas to life
+                        </p>
+                    </Reveal>
+                </div>
 
                 <div className="contact-content">
-                    <motion.div
-                        className="contact-info"
-                        initial={{ opacity: 0, x: -40 }}
-                        animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
+                    <Reveal variant="left" delay={0.1} className="contact-info">
                         <div className="contact-info-card glass-card">
                             <h3 className="contact-info-title">Contact Information</h3>
                             <p className="contact-info-desc">
                                 Feel free to reach out through any of these channels. I typically respond within 24 hours.
                             </p>
 
-                            <div className="contact-details">
-                                <div className="contact-detail-item">
+                            <RevealGroup
+                                className="contact-details"
+                                staggerChildren={0.12}
+                            >
+                                <motion.div className="contact-detail-item" variants={fadeUp}>
                                     <div className="contact-detail-icon">
                                         <FaEnvelope size={18} />
                                     </div>
@@ -91,9 +94,9 @@ export default function Contact() {
                                             {personalInfo.email}
                                         </a>
                                     </div>
-                                </div>
+                                </motion.div>
 
-                                <div className="contact-detail-item">
+                                <motion.div className="contact-detail-item" variants={fadeUp}>
                                     <div className="contact-detail-icon">
                                         <FaPhone size={18} />
                                     </div>
@@ -101,9 +104,9 @@ export default function Contact() {
                                         <span className="contact-detail-label">Phone</span>
                                         <span className="contact-detail-value">{personalInfo.phone}</span>
                                     </div>
-                                </div>
+                                </motion.div>
 
-                                <div className="contact-detail-item">
+                                <motion.div className="contact-detail-item" variants={fadeUp}>
                                     <div className="contact-detail-icon">
                                         <FaMapMarkerAlt size={18} />
                                     </div>
@@ -111,8 +114,8 @@ export default function Contact() {
                                         <span className="contact-detail-label">Location</span>
                                         <span className="contact-detail-value">{personalInfo.location}</span>
                                     </div>
-                                </div>
-                            </div>
+                                </motion.div>
+                            </RevealGroup>
 
                             <div className="contact-socials">
                                 <a href={personalInfo.social.github} target="_blank" rel="noreferrer" className="contact-social-icon" aria-label="GitHub">
@@ -126,75 +129,93 @@ export default function Contact() {
                                 </a>
                             </div>
                         </div>
-                    </motion.div>
+                    </Reveal>
 
-                    <motion.div
-                        className="contact-form-wrapper"
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
+                    <Reveal variant="right" delay={0.2} className="contact-form-wrapper">
                         <form className="contact-form glass-card" onSubmit={handleSubmit}>
-                            <div className="form-row">
-                                <div className="form-group">
-                                    <label htmlFor="name">Full Name</label>
+                            <motion.div
+                                className="contact-fields"
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: true }}
+                                variants={stagger(0.08)}
+                            >
+                                <div className="form-row">
+                                    <motion.div className="form-group" variants={fadeUp}>
+                                        <label htmlFor="name">Full Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            placeholder="John Doe"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </motion.div>
+                                    <motion.div className="form-group" variants={fadeUp}>
+                                        <label htmlFor="email">Email Address</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            placeholder="john@example.com"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </motion.div>
+                                </div>
+
+                                <motion.div className="form-group" variants={fadeUp}>
+                                    <label htmlFor="subject">Subject</label>
                                     <input
                                         type="text"
-                                        id="name"
-                                        name="name"
-                                        placeholder="John Doe"
-                                        value={formData.name}
+                                        id="subject"
+                                        name="subject"
+                                        placeholder="Project Discussion"
+                                        value={formData.subject}
                                         onChange={handleChange}
                                         required
                                     />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="email">Email Address</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        placeholder="john@example.com"
-                                        value={formData.email}
+                                </motion.div>
+
+                                <motion.div className="form-group" variants={fadeUp}>
+                                    <label htmlFor="message">Message</label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        rows={5}
+                                        placeholder="Tell me about your project..."
+                                        value={formData.message}
                                         onChange={handleChange}
                                         required
                                     />
-                                </div>
-                            </div>
+                                </motion.div>
+                            </motion.div>
 
-                            <div className="form-group">
-                                <label htmlFor="subject">Subject</label>
-                                <input
-                                    type="text"
-                                    id="subject"
-                                    name="subject"
-                                    placeholder="Project Discussion"
-                                    value={formData.subject}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
+                            <AnimatePresence>
+                                {status.message && (
+                                    <motion.div
+                                        className={`form-status ${status.type}`}
+                                        initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+                                        animate={{ opacity: 1, height: 'auto', marginBottom: 16 }}
+                                        exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+                                        transition={{ duration: 0.35 }}
+                                    >
+                                        {status.message}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
 
-                            <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows={5}
-                                    placeholder="Tell me about your project..."
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            {status.message && (
-                                <div className={`form-status ${status.type}`}>
-                                    {status.message}
-                                </div>
-                            )}
-
-                            <button type="submit" className="btn btn-primary submit-btn" disabled={isSubmitting}>
+                            <motion.button
+                                type="submit"
+                                className="btn btn-primary submit-btn"
+                                disabled={isSubmitting}
+                                {...submitMagnet}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.97 }}
+                            >
                                 {isSubmitting ? (
                                     <>
                                         <span className="spinner" />
@@ -206,9 +227,9 @@ export default function Contact() {
                                         Send Message
                                     </>
                                 )}
-                            </button>
+                            </motion.button>
                         </form>
-                    </motion.div>
+                    </Reveal>
                 </div>
             </div>
         </section>

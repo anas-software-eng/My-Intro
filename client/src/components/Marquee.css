@@ -1,0 +1,81 @@
+.marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 28px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.015);
+    /* fade the edges so words dissolve instead of hard-cutting */
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee-row {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 32s linear infinite;
+}
+
+.marquee-reverse .marquee-row {
+    animation-direction: reverse;
+    animation-duration: 40s;
+}
+
+.marquee:hover .marquee-row {
+    animation-play-state: paused;
+}
+
+.marquee-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding-right: 24px;
+}
+
+.marquee-text {
+    font-size: clamp(1.4rem, 3.4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: var(--text-primary);
+}
+
+.marquee-text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(240, 240, 240, 0.35);
+}
+
+.marquee-star {
+    color: var(--accent-primary);
+    font-size: 1rem;
+    animation: marquee-spin 6s linear infinite;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes marquee-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-row,
+    .marquee-star {
+        animation: none;
+    }
+}

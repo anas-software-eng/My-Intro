@@ -1,0 +1,58 @@
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    border-radius: 50%;
+    /* motion values drive x/y — keep CSS transform free of offsets */
+    translate: -50% -50%;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.9);
+}
+
+.cursor-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(108, 99, 255, 0.6);
+    background: rgba(108, 99, 255, 0.06);
+    backdrop-filter: blur(2px);
+}
+
+.cursor-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* Hide the native cursor only while ours is active */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+    cursor: none !important;
+}
+
+/* Text fields still need a caret affordance */
+html.has-custom-cursor input,
+html.has-custom-cursor textarea {
+    cursor: text !important;
+}
+
+@media (pointer: coarse) {
+    .cursor-dot,
+    .cursor-ring {
+        display: none;
+    }
+}

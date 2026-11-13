@@ -58,7 +58,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis owns smooth scrolling — native smooth conflicts with it */
+  scroll-behavior: auto;
   font-size: 16px;
   scrollbar-width: thin;
   scrollbar-color: var(--accent-primary) var(--bg-secondary);
@@ -170,6 +171,29 @@ ol {
   box-shadow: var(--shadow-glow);
 }
 
+/* ---------- Kinetic text (SplitText) ---------- */
+.split-text {
+  display: block;
+}
+
+.split-text-inner {
+  display: block;
+}
+
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* room for descenders so masks don't clip g/y/p */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.split-word-mask {
+  display: inline-block;
+  will-change: transform;
+}
+
 /* Jameelon base */
 .btn {
   display: inline-flex;
@@ -274,5 +298,32 @@ ol {
 
   .section-header {
     margin-bottom: 40px;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/*
+  Respect reduced-motion: collapse every animation/transition and let
+  framer's useReducedMotion short-circuit the JS-driven motion.
+*/
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }

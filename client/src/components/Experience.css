@@ -10,15 +10,27 @@
     padding-left: 40px;
 }
 
-.timeline::before {
-    content: '';
+/* Static dim track */
+.timeline-track {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Bright line that draws itself with scroll */
+.timeline-progress {
     position: absolute;
     left: 15px;
     top: 0;
     bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, var(--accent-primary), var(--accent-tertiary));
-    opacity: 0.3;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.7);
+    transform-origin: top center;
+    pointer-events: none;
 }
 
 .timeline-item {
@@ -43,7 +55,9 @@
     align-items: center;
     justify-content: center;
     color: var(--accent-primary);
-    z-index: 1;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.12),
+        0 0 16px rgba(108, 99, 255, 0.45);
 }
 
 .timeline-card {

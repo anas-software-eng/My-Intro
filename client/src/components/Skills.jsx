@@ -1,13 +1,45 @@
 import { useState } from 'react';
 import { skills } from '../data/portfolio';
-import { useScrollReveal } from '../hooks/useAnimations';
-import { motion } from 'framer-motion';
+import { useScrollReveal, useCountUp, useTilt } from '../hooks/useAnimations';
+import { fadeUp, stagger } from '../lib/motion';
+import SplitText from './SplitText';
+import Reveal from './Reveal';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Skills.css';
+
+function SkillCard({ skill, active }) {
+    const Icon = skill.icon;
+    const level = useCountUp(`${skill.level}%`, active, 1400);
+    const tilt = useTilt(10);
+
+    return (
+        <motion.div
+            className="skill-card glass-card"
+            {...tilt}
+            variants={fadeUp}
+            exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.25 } }}
+            layout
+        >
+            <div className="skill-icon-wrapper">
+                <Icon size={28} />
+            </div>
+            <span className="skill-name">{skill.name}</span>
+            <div className="skill-bar-container">
+                <motion.div
+                    className="skill-bar"
+                    initial={{ width: 0 }}
+                    animate={{ width: active ? `${skill.level}%` : 0 }}
+                    transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                />
+            </div>
+            <span className="skill-level">{level}</span>
+        </motion.div>
+    );
+}
 
 export default function Skills() {
     const [ref, isVisible] = useScrollReveal();
     const [activeFilter, setActiveFilter] = useState('all');
-
     const filters = [
         { key: 'all', label: 'All' },
         { key: 'frontend', label: 'Frontend' },
@@ -22,68 +54,48 @@ export default function Skills() {
     return (
         <section className="skills" id="skills" ref={ref}>
             <div className="container">
-                <motion.div
-                    className="section-header"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6 }}
-                >
-                    <span className="section-label">My Skills</span>
-                    <h2 className="section-title">
-                        Technologies I{' '}
-                        <span className="gradient-text">Work With</span>
-                    </h2>
-                    <p className="section-subtitle" style={{ margin: '0 auto' }}>
-                        Constantly learning and adapting to the latest technologies to deliver the best solutions
-                    </p>
-                </motion.div>
-
-                <div className="skills-filters">
-                    {filters.map((f) => (
-                        <button
-                            key={f.key}
-                            className={`filter-btn ${activeFilter === f.key ? 'active' : ''}`}
-                            onClick={() => setActiveFilter(f.key)}
-                        >
-                            {f.label}
-                        </button>
-                    ))}
+                <div className="section-header">
+                    <Reveal variant="fade">
+                        <span className="section-label">My Skills</span>
+                    </Reveal>
+                    <SplitText
+                        text="Technologies I Work With"
+                        highlight="Work With"
+                        as="h2"
+                        className="section-title"
+                    />
+                    <Reveal variant="fade" delay={0.25}>
+                        <p className="section-subtitle" style={{ margin: '0 auto' }}>
+                            Constantly learning and adapting to the latest technologies to deliver the best solutions
+                        </p>
+                    </Reveal>
                 </div>
+
+                <Reveal variant="scale" delay={0.1}>
+                    <div className="skills-filters">
+                        {filters.map((f) => (
+                            <button
+                                key={f.key}
+                                className={`filter-btn ${activeFilter === f.key ? 'active' : ''}`}
+                                onClick={() => setActiveFilter(f.key)}
+                            >
+                                {f.label}
+                            </button>
+                        ))}
+                    </div>
+                </Reveal>
 
                 <motion.div
                     className="skills-grid"
-                    initial={{ opacity: 0 }}
-                    animate={isVisible ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.6, delay: 0.3 }}
+                    initial="hidden"
+                    animate={isVisible ? 'show' : 'hidden'}
+                    variants={stagger(0.07)}
                 >
-                    {filteredSkills.map((skill, i) => {
-                        const Icon = skill.icon;
-                        return (
-                            <motion.div
-                                key={skill.name}
-                                className="skill-card glass-card"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                                transition={{ duration: 0.4, delay: 0.1 * i }}
-                                layout
-                            >
-                                <div className="skill-icon-wrapper">
-                                    <Icon size={28} />
-                                </div>
-                                <span className="skill-name">{skill.name}</span>
-                                <div className="skill-bar-container">
-                                    <div
-                                        className="skill-bar"
-                                        style={{
-                                            width: isVisible ? `${skill.level}%` : '0%',
-                                            transitionDelay: `${0.5 + i * 0.1}s`
-                                        }}
-                                    />
-                                </div>
-                                <span className="skill-level">{skill.level}%</span>
-                            </motion.div>
-                        );
-                    })}
+                    <AnimatePresence mode="popLayout">
+                        {filteredSkills.map((skill) => (
+                            <SkillCard key={skill.name} skill={skill} active={isVisible} />
+                        ))}
+                    </AnimatePresence>
                 </motion.div>
             </div>
         </section>

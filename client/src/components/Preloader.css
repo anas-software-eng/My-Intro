@@ -1,0 +1,107 @@
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Diagonal sweep that keeps the black panel alive while counting */
+.preloader::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        transparent 0deg,
+        rgba(108, 99, 255, 0.07) 60deg,
+        transparent 140deg,
+        rgba(0, 210, 255, 0.05) 240deg,
+        transparent 320deg
+    );
+    animation: preloader-spin 6s linear infinite;
+}
+
+@keyframes preloader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.preloader-inner {
+    position: relative;
+    z-index: 1;
+    width: min(680px, 88vw);
+}
+
+.preloader-name {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-size: clamp(2.4rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    padding-bottom: 0.1em;
+}
+
+.preloader-char {
+    display: inline-block;
+    color: var(--text-primary);
+}
+
+.preloader-char-accent {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.preloader-space {
+    width: 0.3em;
+}
+
+.preloader-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 28px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+}
+
+.preloader-count {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--accent-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.preloader-bar {
+    margin-top: 16px;
+    height: 2px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.preloader-bar-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    box-shadow: 0 0 12px rgba(108, 99, 255, 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .preloader::before {
+        animation: none;
+    }
+}

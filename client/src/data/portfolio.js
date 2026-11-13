@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars -- icons kept for the commented-out skill entries below */
 import {
     FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaFigma, FaAws
 } from 'react-icons/fa';
@@ -5,6 +6,7 @@ import {
     SiTypescript, SiJavascript, SiMongodb, SiPostgresql,
     SiRedux, SiTailwindcss, SiExpress, SiFirebase
 } from 'react-icons/si';
+/* eslint-enable no-unused-vars */
 
 export const personalInfo = {
     name: "Anas Jameel",
@@ -51,75 +53,51 @@ export const skills = [
 export const projects = [
     {
         id: 1,
-        title: "E-Commerce Platform",
-        subtitle: "Full-Stack Web Application",
-        description: "A complete e-commerce solution with real-time inventory management, Stripe payment integration, admin dashboard, and customer analytics. Built with scalability in mind to handle 10K+ concurrent users.",
-        tech: ["React", "Node.js", "MongoDB", "Stripe", "Redis", "Docker"],
+        title: "Krub",
+        subtitle: "Wholesale Group Buying Platform",
+        description: "A wholesale platform where communities can pool orders, track savings, and source products together.",
+        tech: ["Next.js", "React", "Group buying"],
         category: "fullstack",
-        features: ["Real-time inventory", "Payment processing", "Admin dashboard", "Analytics"],
-        github: "#",
-        live: "#",
+        features: ["Wholesale communities", "Pooled orders", "Savings tracking", "Product sourcing"],
+        github: null,
+        live: "https://krub.ai/",
         color: "#6C63FF"
     },
     {
         id: 2,
-        title: "Project Management Tool",
-        subtitle: "SaaS Application",
-        description: "A Jira-like project management tool with drag-and-drop Kanban boards, team collaboration features, time tracking, sprint planning, and comprehensive reporting.",
-        tech: ["React", "TypeScript", "Express", "PostgreSQL", "Socket.IO"],
+        title: "SeeBiz Inventory Management",
+        subtitle: "Inventory Management System",
+        description: "An inventory management application for organizing and managing business stock through the SeeBiz platform.",
+        tech: ["React", "Bootstrap"],
         category: "fullstack",
-        features: ["Kanban boards", "Sprint planning", "Time tracking", "Team chat"],
-        github: "#",
-        live: "#",
+        features: ["Inventory management", "Business platform", "Online access"],
+        github: null,
+        live: "https://inventory.seebiz.com/",
         color: "#FF6584"
     },
     {
         id: 3,
-        title: "AI Content Generator",
-        subtitle: "Machine Learning Application",
-        description: "An intelligent content generation platform leveraging OpenAI APIs for blog posts, social media content, and marketing copy. Features include tone adjustment, SEO optimization, and multi-language support.",
-        tech: ["React", "Python", "FastAPI", "OpenAI", "PostgreSQL"],
+        title: "ConnectMedic",
+        subtitle: "Secure Healthcare Messaging",
+        description: "A secure messaging platform that connects patients with their care teams, with encrypted communication available around the clock.",
+        tech: ["React", "Real-time messaging"],
         category: "fullstack",
-        features: ["AI generation", "SEO optimization", "Multi-language", "Templates"],
-        github: "#",
-        live: "#",
+        features: ["Patient messaging", "Care team communication", "Encrypted messaging", "24/7 access"],
+        github: null,
+        live: "https://connectmedic-frontend.vercel.app/",
         color: "#00D2FF"
     },
     {
         id: 4,
-        title: "Real-Time Chat Application",
-        subtitle: "Communication Platform",
-        description: "Feature-rich messaging application with end-to-end encryption, group chats, file sharing, voice messages, and video calling capabilities using WebRTC.",
-        tech: ["React", "Node.js", "Socket.IO", "WebRTC", "MongoDB"],
-        category: "fullstack",
-        features: ["E2E encryption", "Video calls", "File sharing", "Group chats"],
-        github: "#",
-        live: "#",
-        color: "#7C4DFF"
-    },
-    {
-        id: 5,
-        title: "Finance Dashboard",
-        subtitle: "Data Visualization App",
-        description: "Interactive financial dashboard with real-time stock data, portfolio tracking, expense analytics, and predictive insights using chart.js and D3.js visualizations.",
-        tech: ["React", "D3.js", "Node.js", "Firebase", "Chart.js"],
+        title: "SeeBiz Books",
+        subtitle: "Business Books Application",
+        description: "A web-based Books application within the SeeBiz business platform, available through its account access page.",
+        tech: ["React", "Business application"],
         category: "frontend",
-        features: ["Live charts", "Portfolio tracking", "Expense analytics", "Predictions"],
-        github: "#",
-        live: "#",
-        color: "#00E676"
-    },
-    {
-        id: 6,
-        title: "Healthcare API",
-        subtitle: "REST API Platform",
-        description: "HIPAA-compliant REST API for healthcare applications with patient management, appointment scheduling, prescription tracking, and secure data exchange.",
-        tech: ["Node.js", "Express", "PostgreSQL", "JWT", "Docker"],
-        category: "backend",
-        features: ["HIPAA compliant", "Patient management", "Scheduling", "Secure exchange"],
-        github: "#",
-        live: "#",
-        color: "#FF9100"
+        features: ["Books app", "SeeBiz platform", "Account access"],
+        github: null,
+        live: "https://books.seebiz.com/loginreplace",
+        color: "#7C4DFF"
     }
 ];
 

@@ -1,6 +1,36 @@
 .about {
     padding: var(--section-padding);
     position: relative;
+    overflow: hidden;
+}
+
+/* Parallax glow that drifts behind the section */
+.about-glow {
+    position: absolute;
+    top: 10%;
+    right: -10%;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: rgba(108, 99, 255, 0.09);
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.about .container {
+    position: relative;
+    z-index: 1;
+}
+
+.about-word {
+    display: inline-block;
+    will-change: transform, opacity, filter;
+}
+
+.about-word-accent {
+    color: var(--accent-primary);
+    font-weight: 600;
 }
 
 .about-content {

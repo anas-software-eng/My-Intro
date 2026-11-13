@@ -97,6 +97,11 @@
     font-size: 0.85rem;
 }
 
+.heart-wrap {
+    display: inline-flex;
+    color: #ff5252;
+}
+
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;
