@@ -3,7 +3,7 @@ import { personalInfo, stats } from '../data/portfolio';
 import { useTypewriter, useCountUp, useMouseParallax } from '../hooks/useAnimations';
 import { scrollToId } from '../lib/scroll';
 import { fadeUp, stagger } from '../lib/motion';
-import profilePhoto from '../assets/profile-portrait.png';
+import profilePhoto from '../assets/myself.jfif';
 import SplitText from './SplitText';
 import { FaGithub, FaLinkedin, FaArrowDown, FaDownload } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
@@ -139,7 +139,7 @@ export default function Hero({ introDone = true }) {
                         <img
                             className="hero-portrait"
                             src={profilePhoto}
-                            alt="Anas Jameel"
+                            alt="Anas Jameel, Full Stack Developer"
                         />
                     </motion.div>
                 </div>
