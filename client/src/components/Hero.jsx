@@ -3,6 +3,7 @@ import { personalInfo, stats } from '../data/portfolio';
 import { useTypewriter, useCountUp, useMouseParallax } from '../hooks/useAnimations';
 import { scrollToId } from '../lib/scroll';
 import { fadeUp, stagger } from '../lib/motion';
+import profilePhoto from '../assets/profile-portrait.png';
 import SplitText from './SplitText';
 import { FaGithub, FaLinkedin, FaArrowDown, FaDownload } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
@@ -59,75 +60,89 @@ export default function Hero({ introDone = true }) {
             </div>
 
             <div className="hero-content container">
-                <motion.div
-                    className="hero-text"
-                    initial="hidden"
-                    animate={introDone ? 'show' : 'hidden'}
-                    variants={stagger(0.1, 0.05)}
-                >
-                    <motion.div className="hero-badge" variants={fadeUp}>
-                        <span className="badge-dot" />
-                        Available for Working on your projects
-                    </motion.div>
-
-                    <h1 className="hero-title">
-                        <motion.span
-                            className="hero-hello"
-                            variants={fadeUp}
-                            style={{ display: 'block' }}
-                        >
-                            Hi, I&apos;m
-                        </motion.span>
-                        <SplitText
-                            text={personalInfo.name}
-                            as="span"
-                            className="hero-name"
-                            play={introDone}
-                        />
-                    </h1>
-
-                    <motion.div className="hero-role" variants={fadeUp}>
-                        <span className="role-prefix">I&apos;m a </span>
-                        <span className="role-text">{roles}</span>
-                        <span className="cursor-blink">|</span>
-                    </motion.div>
-
-                    <motion.p className="hero-description" variants={fadeUp}>
-                        {personalInfo.description}
-                    </motion.p>
-
-                    <motion.div className="hero-actions" variants={fadeUp}>
-                        <button className="btn btn-primary" onClick={() => go('projects')}>
-                            View My Work
+                <div className="hero-main">
+                    <motion.div
+                        className="hero-text"
+                        initial="hidden"
+                        animate={introDone ? 'show' : 'hidden'}
+                        variants={stagger(0.1, 0.05)}
+                    >
+                        <motion.div className="hero-badge" variants={fadeUp}>
+                            <span className="badge-dot" />
+                            Available for Working on your projects
+                        </motion.div>
+                        <h1 className="hero-title">
                             <motion.span
-                                animate={{ y: [0, 4, 0] }}
-                                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-                                style={{ display: 'inline-flex' }}
+                                className="hero-hello"
+                                variants={fadeUp}
+                                style={{ display: 'block' }}
                             >
-                                <FaArrowDown size={14} />
+                                Hi, I&apos;m
                             </motion.span>
-                        </button>
-                        <a href={personalInfo.resumeUrl} className="btn btn-outline" download rel="noreferrer">
-                            <FaDownload size={14} />
-                            Download Resume
-                        </a>
-                        <button className="btn btn-outline" onClick={() => go('contact')}>
-                            Let&apos;s Talk
-                        </button>
+                            <SplitText
+                                text={personalInfo.name}
+                                as="span"
+                                className="hero-name"
+                                play={introDone}
+                            />
+                        </h1>
+
+                        <motion.div className="hero-role" variants={fadeUp}>
+                            <span className="role-prefix">I&apos;m a </span>
+                            <span className="role-text">{roles}</span>
+                            <span className="cursor-blink">|</span>
+                        </motion.div>
+
+                        <motion.p className="hero-description" variants={fadeUp}>
+                            {personalInfo.description}
+                        </motion.p>
+
+                        <motion.div className="hero-actions" variants={fadeUp}>
+                            <button className="btn btn-primary" onClick={() => go('projects')}>
+                                View My Work
+                                <motion.span
+                                    animate={{ y: [0, 4, 0] }}
+                                    transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+                                    style={{ display: 'inline-flex' }}
+                                >
+                                    <FaArrowDown size={14} />
+                                </motion.span>
+                            </button>
+                            <a href={personalInfo.resumeUrl} className="btn btn-outline" download rel="noreferrer">
+                                <FaDownload size={14} />
+                                Download Resume
+                            </a>
+                            <button className="btn btn-outline" onClick={() => go('contact')}>
+                                Let&apos;s Talk
+                            </button>
+                        </motion.div>
+
+                        <motion.div className="hero-socials" variants={fadeUp}>
+                            <a href={personalInfo.social.github} target="_blank" rel="noreferrer" className="social-icon" aria-label="GitHub">
+                                <FaGithub size={20} />
+                            </a>
+                            <a href={personalInfo.social.linkedin} target="_blank" rel="noreferrer" className="social-icon" aria-label="LinkedIn">
+                                <FaLinkedin size={20} />
+                            </a>
+                            <a href={personalInfo.social.upwork} target="_blank" rel="noreferrer" className="social-icon" aria-label="Upwork">
+                                <SiUpwork size={20} />
+                            </a>
+                        </motion.div>
                     </motion.div>
 
-                    <motion.div className="hero-socials" variants={fadeUp}>
-                        <a href={personalInfo.social.github} target="_blank" rel="noreferrer" className="social-icon" aria-label="GitHub">
-                            <FaGithub size={20} />
-                        </a>
-                        <a href={personalInfo.social.linkedin} target="_blank" rel="noreferrer" className="social-icon" aria-label="LinkedIn">
-                            <FaLinkedin size={20} />
-                        </a>
-                        <a href={personalInfo.social.upwork} target="_blank" rel="noreferrer" className="social-icon" aria-label="Upwork">
-                            <SiUpwork size={20} />
-                        </a>
+                    <motion.div
+                        className="hero-portrait-wrap"
+                        initial={{ opacity: 0, x: 32 }}
+                        animate={introDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 32 }}
+                        transition={{ duration: 0.8, delay: 0.25 }}
+                    >
+                        <img
+                            className="hero-portrait"
+                            src={profilePhoto}
+                            alt="Anas Jameel"
+                        />
                     </motion.div>
-                </motion.div>
+                </div>
 
                 <motion.div
                     className="hero-stats"

@@ -98,7 +98,9 @@ export default function Experience() {
                                             <h3 className="timeline-role">{exp.role}</h3>
                                             <span className="timeline-company">{exp.company}</span>
                                         </div>
-                                        <span className="timeline-duration">{exp.duration}</span>
+                                        {exp.duration && (
+                                            <span className="timeline-duration">{exp.duration}</span>
+                                        )}
                                     </div>
                                     <p className="timeline-desc">{exp.description}</p>
                                     <ul className="timeline-achievements">

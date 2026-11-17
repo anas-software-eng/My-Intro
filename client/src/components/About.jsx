@@ -86,7 +86,7 @@ export default function About() {
                             <WordReveal
                                 className="about-text"
                                 delay={0.15}
-                                text="I'm a full-stack developer with 3+ years of experience building scalable web applications. My journey started with curiosity about how things work on the web, and evolved into a passion for crafting exceptional digital experiences."
+                                text="I'm a full-stack developer with 4+ years of web development experience, including 3 years in frontend development and 1 year specializing in the MERN stack. My journey started with curiosity about how things work on the web, and evolved into a passion for crafting exceptional digital experiences."
                             />
 
                             <WordReveal
@@ -132,10 +132,10 @@ export default function About() {
                             >
                                 <motion.span
                                     className="service-icon"
-                                    whileHover={{ rotate: [0, -12, 12, 0], scale: 1.15 }}
+                                    whileHover={{ scale: 1.12 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    {service.icon}
+                                    <service.icon aria-hidden="true" />
                                 </motion.span>
                                 <div>
                                     <h4 className="service-title">{service.title}</h4>

@@ -15,12 +15,12 @@ import { useSmoothScroll } from './hooks/useAnimations';
 
 const MARQUEE_STACK = [
     'React', 'Node.js', 'TypeScript', 'MongoDB', 'Express.js',
-    'Next.js', 'TailwindCSS', 'Python', 'Docker', 'Figma'
+    'TailwindCSS', 'Python', 'Figma'
 ];
 
 const MARQUEE_SERVICES = [
     'Full Stack Development', 'API Design', 'UI/UX Implementation',
-    'Cloud Deployment', 'Database Architecture'
+     'Database Architecture'
 ];
 
 function App() {

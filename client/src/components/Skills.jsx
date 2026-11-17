@@ -32,7 +32,7 @@ function SkillCard({ skill, active }) {
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 />
             </div>
-            <span className="skill-level">{level}</span>
+            {/* <span className="skill-level">{level}</span> */}
         </motion.div>
     );
 }

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars -- icons kept for the commented-out skill entries below */
 import {
-    FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaFigma, FaAws
+    FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaFigma, FaAws,
+    FaLaptopCode, FaServer, FaPaintBrush, FaDatabase
 } from 'react-icons/fa';
 import {
     SiTypescript, SiJavascript, SiMongodb, SiPostgresql,
@@ -16,7 +17,7 @@ export const personalInfo = {
     email: "anasjameel188@gmail.com",
     phone: "+92 309 8127814",
     location: "Lahore, Pakistan",
-    resumeUrl: "/resume.txt",
+    resumeUrl: "/resume.pdf",
     social: {
         github: "https://github.com/anas-software-eng",
         linkedin: "https://www.linkedin.com/in/anas-software-eng/",
@@ -26,7 +27,7 @@ export const personalInfo = {
 };
 
 export const stats = [
-    { number: "3+", label: "Years Experience" },
+    { number: "4+", label: "Years Experience" },
     { number: "25+", label: "Projects Delivered" },
     { number: "15+", label: "Happy Clients" },
     { number: "99%", label: "Client Satisfaction" }
@@ -104,38 +105,24 @@ export const projects = [
 export const experience = [
     {
         id: 1,
-        role: "Senior Full Stack Developer",
-        company: "Tech Solutions Inc.",
-        duration: "2024 - Present",
-        description: "Leading development of enterprise-grade web applications, mentoring junior developers, and implementing CI/CD pipelines. Reduced deployment time by 60% through automation.",
+        role: "Full Stack Engineer",
+        company: "Turn Feat AI",
+        description: "Developed and maintained responsive web applications across the MERN stack.",
         achievements: [
-            "Led a team of 5 developers on 3 major projects",
-            "Reduced page load time by 40% through optimization",
-            "Implemented microservices architecture serving 50K+ users"
+            "Developed and maintained responsive web applications using React.js, Node.js, Express.js, and MongoDB",
+            "Built RESTful APIs, implemented CRUD operations, and integrated frontend and backend services",
+            "Leveraged Claude and GitHub Copilot for AI-assisted development, debugging, and feature enhancement"
         ]
     },
     {
         id: 2,
-        role: "Full Stack Developer",
-        company: "Digital Agency Co.",
-        duration: "2023 - 2024",
-        description: "Developed and maintained multiple client-facing applications using React and Node.js. Collaborated with design teams to deliver pixel-perfect UIs.",
+        role: "Frontend Engineer",
+        company: "SeeBiz Pvt. Ltd.",
+        description: "Developed and maintained responsive user interfaces and improved application usability.",
         achievements: [
-            "Delivered 12+ client projects on time and within budget",
-            "Built reusable component library used across 8 projects",
-            "Achieved 99.9% uptime for all deployed applications"
-        ]
-    },
-    {
-        id: 3,
-        role: "Frontend Developer",
-        company: "Startup Hub",
-        duration: "2022 - 2023",
-        description: "Focused on building responsive, accessible web interfaces for startups. Specialized in React.js, state management, and performance optimization.",
-        achievements: [
-            "Converted Figma designs to pixel-perfect React components",
-            "Improved Lighthouse scores from 65 to 95 across all projects",
-            "Integrated third-party APIs and payment gateways"
+            "Developed and maintained responsive user interfaces using React.js, JavaScript (ES6+), HTML5, and CSS3",
+            "Collaborated with cross-functional teams to deliver scalable, maintainable, and user-friendly web applications",
+            "Improved existing features, resolved UI issues, and enhanced application usability"
         ]
     }
 ];
@@ -168,21 +155,21 @@ export const services = [
     {
         title: "Full Stack Development",
         description: "End-to-end web application development from database design to pixel-perfect UI implementation.",
-        icon: "🚀"
+        icon: FaLaptopCode
     },
     {
         title: "API Development",
         description: "RESTful and GraphQL API design, development, and integration with third-party services.",
-        icon: "⚡"
+        icon: FaServer
     },
     {
         title: "UI/UX Implementation",
         description: "Converting designs into responsive, accessible, and performant web interfaces.",
-        icon: "🎨"
+        icon: FaPaintBrush
     },
     {
         title: "Database Design",
         description: "Scalable database architecture with SQL and NoSQL solutions optimized for performance.",
-        icon: "🗄️"
+        icon: FaDatabase
     }
 ];
